@@ -1,0 +1,206 @@
+{
+    "type": "geojson",
+    "generateId": true,
+    "data": {
+        "type": "FeatureCollection",
+        "features": [{
+            "type": "Feature",
+            "properties": {
+                "type": "moTransport",
+                "indice": 0,
+                "description": "<strong>Aéroport de Lyon</strong><p>Aéroport de départ à Lyon, France.</p>",
+                "symbol":  "avion",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [5.077474, 45.720925]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "moTransport",
+                "indice": 1,
+                "description": "<strong>Gare de Lyon Part-Dieu</strong><p>Gare de départ à Lyon, France.</p>",
+                "symbol":  "train",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [4.861059, 45.760543]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "moTransport",
+                "indice": 2,
+                "description": "<strong>Gare de Lyon Perache</strong><p>Gare routière de départ à Lyon, France.</p>",
+                "symbol":  "bus",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [4.826668, 45.749482]
+            }
+        }, 
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "moTransport",
+                "indice": 0,
+                "description": "<strong>Aéroport de Barcelone</strong><p>Aéroport d'arrivé à Barcelone, Espagne.</p>",
+                "symbol": "avion",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.075883, 41.302515]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "moTransport",
+                "indice": 1,
+                "description": "<strong>Gare de Barcelona-Sants</strong><p>Gare d'arrivé à Barcelone, Espagne.</p>",
+                "symbol": "train",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.140244, 41.379086]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "moTransport",
+                "indice": 2,
+                "description": "<strong>Station de bus de Barcelone nord</strong><p>Gare routière d'arrivé à Barcelone, Espagne.</p>",
+                "symbol": "bus",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.182714, 41.394557]
+            }
+        }, 
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "hotel",
+                "indice": 0,
+                "description": "<strong>The One Barcelona</strong><p>Hôtel 5 étoiles d'exception à Barcelone, Espagne.</p>",
+                "symbol": "hotel",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.162953, 41.396148]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "hotel",
+                "indice": 1,
+                "description": "<strong>Hotel Indigo Barcelona</strong><p>Hôtel 4 étoiles de grand standing à Barcelone, Espagne.</p>",
+                "symbol": "hotel",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.170141, 41.391267]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "hotel",
+                "indice": 2,
+                "description": "<strong>Hotel NH Barcelona Diagonal Center</strong><p>Hôtel 3 remarquable étoiles à Barcelone, Espagne.</p>",
+                "symbol": "hotel",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.192521, 41.398150]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "hotel",
+                "indice": 3,
+                "description": "<strong>Hotel NH Barcelona Diagonal Center</strong><p>Hôtel 2 étoiles singulier à Barcelone, Espagne.</p>",
+                "symbol": "hotel",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.205724, 41.400403]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "hotel",
+                "indice": 4,
+                "description": "<strong>Free Hostels Barcelona</strong><p>Hôtel 1 étoile à Barcelone, Espagne.</p>",
+                "symbol": "hotel",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.144534, 41.388583]
+            }
+        }, 
+        {
+            "type": "Feature",
+            "properties": {
+                "type": "restauration",
+                "indice": 0,
+                "description": "<strong>Lasarte</strong><p>Restaurant 3 étoiles au guide Michelin à Barcelone, Espagne.</p>",
+                "symbol": "restaurant",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.161802, 41.393510]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "restauration",
+                "indice": 1,
+                "description": "<strong>Cocina Hermanos Torres</strong><p>Restaurant 2 étoiles au guide Michelin à Barcelone, Espagne.</p>",
+                "symbol": "restaurant",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.140188, 41.386401]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "restauration",
+                "indice": 2,
+                "description": "<strong>Dos Palillos</strong><p>Restaurant 1 étoile au guide Michelin à Barcelone, Espagne.</p>",
+                "symbol": "restaurant",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.168652, 41.383299]
+            }
+        }, {
+            "type": "Feature",
+            "properties": {
+                "type": "restauration",
+                "indice": 3,
+                "description": "<strong>Berbena</strong><p>Restaurant conseillé par le guide Michelin à Barcelone, Espagne.</p>",
+                "symbol": "restaurant",
+                "opacity": 1
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.156646, 41.396522]
+            }
+        }]
+    }
+}

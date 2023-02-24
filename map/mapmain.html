@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="BALLEUR Maxime, GRIMARD Valentin">
+    <meta name="description" content="Page permettant l'affichage de la map à personnaliser">
+
+    <link rel="stylesheet" href="mapstyle.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+
+<body>
+    <!-- div dans lequel se trouve la map -->
+    <div id='map'></div>
+
+    <!-- def du menu de choix du style de la carte -->
+    <div id="menu">
+        <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" checked="checked">
+        <label for="satellite-v9">satellite</label>
+        <input id="streets-v11" type="radio" name="rtoggle" value="streets">
+        <label for="streets-v11">streets</label>
+    </div>
+
+    <!-- import nécessaire pour la carte mapbox et du script de la carte -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+    <script src="mapscript.js" defer></script>
+</body>
+</html>

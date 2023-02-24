@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="BALLEUR Maxime, GRIMARD Valentin">
+    <title>Voyage de rêve - Payement</title>
+    <meta name="keywords" content="vacance,voyage,vacation,holydays" />
+    <meta name="description" content="Page de  paiement du voyage choisi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images-videos/brandIcon.png">
+    <link rel="stylesheet" href="../css/stylesheet.css">
+</head>
+
+
+<body>
+    <!-- Section de la barre du header pour les liens -->
+    <header id="Header">
+    </header>
+
+
+    <!-- Section du bouton pour remonter en haut de page qui apparait quand on descent -->
+    <nav id="SideMenu">
+    </nav>
+
+
+    <!-- Image de fond de la page d'accueil -->
+    <div id="BackgroundImage">
+        <img src="../images-videos/background.jpg">
+    </div>
+
+
+    <!-- Image de cadis (icon pour la page) -->
+    <div id="Title">
+        <h1><img src="../images-videos/imagePanier.png" alt="Image de panier" style="width:5%">  Votre Panier  <img src="../images-videos/imagePanier.png" alt="Image de panier" style="width:5%"></h1>
+    </div>
+
+
+    <!-- Section résumant la totalité du panier avec les articles + les options -->
+    <section id="Summary">
+        <template id="TemplatePaymentTrip">
+            <div class="panierTemplate">
+                <h2>Récapitulatif de commande</h2>
+                <p id="Destination">Votre Destination: {{destination}}</p>
+                
+                <hr>
+                <p id="MeansOfTransport">Votre moyen de Transport: {{meansOfTransport}}</p>
+                
+                <hr>
+                <p id="Hotel">Votre Hotel: {{hotel}}</p>
+                
+                <hr>
+                <p id="OnSiteTransportation">Votre moyen de déplacement sur place: {{onSiteTransportation}}</p>
+                
+                <hr>
+                <p id="Restauration">Les restaurants que vous avez choisi: {{restauration}}</p>
+                
+                <hr>
+                <p class="price">Prix calculé grâce au temps sur place.</p>
+                <div id="changeProduit">
+                    <button class="boutonmoins-plus" value="{{indice}}" onclick="BtnMoins(value)">-</button>
+                    <span class="quantite">{{quantite}}</span>
+                    <button class="boutonmoins-plus" value="{{indice}}" onclick="BtnPlus(value)">+</button>
+                </div>
+            </div>
+        </template>
+
+
+        <!-- S'affiche que si le panier est vide -->
+        <div id="NoBasket">
+            <h1>Votre panier est vide</h1>
+            <p>Vous devez choisir un voyage avant de pouvoir le personnaliser et de pouvoir l'ajouter au panier !</p>
+            <button onclick="window.location.href='../index.html';" title="Go Index">Retour à la page d'accueil</button>
+        </div>
+    </section>
+
+
+    <!-- Section affichant le formulaire à compléter -->
+    <div class="column" id="Form">
+        <h2>Vos informations personnelles</h2>
+        <form name="myForm" autocomplete="on">
+
+            <fieldset>
+                <legend>Identité</legend>
+                Nom* <br>
+                <input type="text" id="Surname"><br>
+                Prénom* <br>
+                <input type="text" id="Name"><br>
+            </fieldset><br>
+
+            <fieldset>
+                <legend>Vos contact</legend>
+                Adresse mail*<br>
+                <input type="email" id="Email"><br>
+                Téléphone*<br>
+                <input type="numeric" pattern="[0-9]{10}" id="PhoneNumber" value="Numero à 10 chiffres"><br>
+            </fieldset><br>
+
+            <fieldset>
+                <legend>Adresse</legend>
+                Adresse de livraison*<br>
+                <input type="text" id="DeliveryAdress"><br>
+                Ville*<br>
+                <input type="text" id="Town"><br>
+                Rue*<br>
+                <input type="text" id="Street"><br>
+                Code Postal*<br>
+                <input type="text" id="Zipcode"><br>
+            </fieldset><br>
+
+            <fieldset>
+                <legend>Renseignements</legend>
+                <div id="TripDateS"> 
+                    Date de début du voyage*<br>
+                    <input type="date" id="StartTrip" onchange="dateChange()"><br>
+                </div>
+                <div id="TripDateE">
+                    Date de fin du voyage*<br>
+                    <input type="date" id="EndTrip" onchange="dateChange()"><br>
+                </div>
+                <span id="RecapDate">
+                    Votre voyage est prévu du  au 
+                </span>
+                <textarea id="Center" >A remplir si vous avez une demande de renseignement à propos du voyage</textarea>
+            </fieldset>
+            <br>
+
+            Les éléments marqués d’une * doivent obligatoirement être remplis<br>
+            <br>
+            <p id="TotPrice">Prix total de la commande ...</p>
+            <input type="reset" value="Reset">
+            <input type="button" onclick="validateForm()" value="Valider la commande"><br>
+        </form>
+    </div>
+
+
+    <!-- Section footer avec les infos et les terms et conditions -->
+    <footer id="Footer">
+    </footer>
+
+
+    <!-- Chargement du script -->
+    <script src="../js/scripts.js"></script>
+</body>
+</html>

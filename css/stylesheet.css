@@ -1,0 +1,515 @@
+/*####### Global #######*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #c0deff;
+    background-repeat: no-repeat;
+    font-family:  Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    font-size: 17px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color:#ffffff;
+}
+a:active {
+    color: #b9d8ff;
+    font-weight: bold;
+}
+
+button {
+    background-color: #ffffff00;
+    border-radius: 10px;
+    color: white;
+    padding: 15px 32px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: 0.8s;
+}
+button:hover {
+    border-color: #b5234f;
+    border-width: +3px;
+    font-weight: bold;
+}
+
+#SideMenu {
+    background: #0c1d2dcb;
+    position: fixed;
+    margin: 10px;
+    top: 0%;
+    right: 0%;
+    z-index: 2;
+    display: none;
+    border-radius: 10px;
+    padding: 4px;
+}
+#SideMenu button {
+    padding: 8px;
+    font-size: 17px;
+}
+#SideMenu a {
+    display: block;
+    padding-top: 5px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 17px;
+    transition: 0.8s;
+}
+#SideMenu a:hover {
+    background: #b5234f;
+    height: 25px;
+}
+#SideMenu ul {
+    padding: 0;
+    margin: 0;
+}
+
+.column {
+    background-color:#0c1d2dcb;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+
+/*####### Index style sheet #######*/
+header {
+    background-color: #0c1d2d;
+    padding: 50px;
+    padding-top: 1px;
+    padding-bottom: 40px;
+    transition: 0.8s;
+}
+header a{
+    float: right;
+    text-decoration: none;
+    height: 40px;
+    line-height: 33px;
+    padding: 0px 10px;
+    font-size: 22px;
+    transition: 0.8s;
+}
+header a:hover{
+    background: #b5234f;
+    height: 33px;
+}
+
+#Icon {
+    height: 40px;
+    width: 40px;
+    float: left;
+    position: relative;
+    top: -9px;
+    left: -20px;
+}
+
+#BackgroundImage {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+#Brandname{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    font-size: 50px;
+    color: #dfdfdf;
+    text-shadow: #202020 0.1px 0.1px 15px;
+}
+
+video {
+    height: 130vh;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#BtnVideo{
+    position: absolute;
+    z-index: 0;
+    top: 7.8%;
+    left: 0%;
+    font-size: 1;
+    border: 1;
+    padding: 3px;
+    border-color: #ffffff63;
+    color: #ffffff63;
+}
+#BtnVideo:hover{
+    border-color: #ffffffd1;
+    color: #ffffffd1;
+}
+
+#BrandOverview {
+    font-size: 20px;
+    background-color: #c0deff;
+    padding: 30px;
+    padding-bottom: 50px;
+    color: #000000;
+    margin-top: -5px;
+}
+
+#FilterTitle {
+    background-color:#0c1d2dcb;
+    padding: 20px;
+    position: sticky;
+    margin: 10%;
+    margin-top: 20%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+}
+
+#TripFilter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+datalist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    writing-mode: vertical-lr;
+    width: 180px;
+    font-size: 13px;
+    transform: translate(20%, 0%);
+}
+
+option {
+    padding: 0;
+}
+
+input[type="range"] {
+    width:  180px;
+    margin: 0;
+}
+
+#Trips {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    padding-bottom: 40px;
+}
+
+#Footer {
+    background-color: #0c1d2d;
+    padding: 20px;
+    padding-top: 1px;
+    padding-bottom: 23px;
+}
+
+
+
+/*####### Personalisation style sheet #######*/
+#TripOverview {
+    overflow: auto;
+    padding: 5px;
+}
+
+#VoyageName {
+    font-size: 35px;
+    position: center;
+    padding-bottom: 40px;
+    text-shadow: #202020 0.1px 0.1px 15px;
+}
+
+.columnright {
+    float: right;
+    width: 50%;
+    padding: 10px;
+}
+
+.columnleft {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+#Image {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#Text {
+    padding: 20px;
+    background-color: #0c1d2dcb;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#NoTrip {
+    display: none;
+    position: relative;
+    color: #7e0000;
+    font-size: 19px;
+    background-color: #c0deff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 75px;
+}
+#NoTrip button {
+    color: #7e0000;
+}
+
+#TripOptions {
+    overflow: auto;
+    padding: 20px;
+    background-color: #0c1d2d;
+}
+
+#Map {
+    padding-top: 40px;
+    width: 60%;
+    float: left;
+}
+
+#Options {
+    padding-left: 20px;
+    width: 40%;
+    font-size: 14px;
+    float: right;
+}
+
+#Reset {
+    margin-top: 5%;
+}
+
+#Carte {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#statCanvasCarte {
+    position: absolute;
+    z-index: 0;
+}
+
+#dynaCanvasCarte {
+    position: relative;
+    z-index: 1;
+}
+
+#TripPaiement {
+    padding: 20px;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 20px;
+    background-color: #c0deff;
+    color: #000000;
+}
+
+#BtnRetour {
+    color: #575757; 
+    border-color: #575757;
+    padding: 10px 25px;
+    font-size: 14px;
+    background-color: #ff00002f;
+}
+
+#BtnPanier {
+    color: #000000;
+    background-color: #00ff006d;
+}
+
+
+
+/*####### Payment style sheet #######*/
+#Title {
+    background-color:#356490;
+    padding: 10px;
+    margin: auto;
+    border-radius: 30px;
+    width: 50%;
+    text-align: center;
+}
+
+#Summary {
+    background-color:#0c1d2d97;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    float: right;
+}
+
+#boutonmoins-plus {
+    border: 1px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    font-size: large;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#quantite {
+    font-size: large;
+    display: flex;
+    width: 50px;
+    height: 50px;
+
+}
+
+#Form {
+    background-color:#0c1d2dc2;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    float: right;
+}
+
+#TripDateS {
+    width: 50%;
+    float: left;
+}
+
+#TripDateE {
+    width: 50%;
+    float: right;
+}
+
+#RecapDate {
+    width: 100%;
+    float: right;
+    padding: 20px;
+}
+
+#Center {
+    width: 100%;
+    float: none;
+}
+
+
+
+/*####### About us style sheet #######*/
+
+#Us {
+    width: 100%;
+    color: #000000;
+}
+
+#centrage {
+    text-align: center;
+}
+
+#columnAboutus {
+    align-items: center;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+#grade {
+    color: grey;
+}
+
+#map {
+    width: 90%;
+    height: 60vh;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20%;
+    margin-bottom: 0%;
+    min-width: 500px;
+}
+
+
+
+/*####### Size adaptation sheet #######*/
+@media only screen and (max-width: 800px) {
+    /* global */
+    #Header {
+        padding-top: 34px;
+        padding-bottom: 90px;
+    }
+
+    #Icon {
+        top: -42px;
+    }
+
+    #SideMenu{
+        width: 100%;
+        color: #0c1d2d;
+        margin: 0;
+        padding: 5px;
+    }
+    #SideMenu button {
+        width: 100%;
+        margin: 0;
+        margin-top: 5px;
+        padding: 5px;
+    }
+    #SideMenu li {
+        display: inline;
+    }
+    #SideMenu a{
+        display: inline;
+        padding: 5px 10px;
+        font-size: 17px;
+    }
+    
+    /* Index page */
+    #BtnVideo {
+        top: 18.4%;
+    }
+
+    #FilterTitle {
+        padding: 5px;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    datalist {
+        display: none;
+    }
+
+    #Trips {
+        overflow: auto;
+        flex-direction: column;
+    }
+
+    /* Personalisation page */
+    .columnleft, .columnright {
+        width: 100%;
+        padding: 1%
+    }
+
+    #TripOptions {
+        padding: 5px;
+    }
+
+    #Map {
+        width: 100%;
+    }
+    
+    #Options {
+        width: 100%;
+        padding-bottom: 20px;
+    }
+
+    #TripPaiement {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

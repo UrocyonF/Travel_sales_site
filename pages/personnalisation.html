@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="BALLEUR Maxime, GRIMARD Valentin">
+    <title>Voyage de rêve - Personnalisation</title>
+    <meta name="keywords" content="vacance,voyage,vacation,holydays" />
+    <meta name="description" content="Page de personalisation du voyage choisi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images-videos/brandIcon.png">
+    <link rel="stylesheet" href="../css/stylesheet.css">
+</head>
+
+
+<body onload="creatTemplate('Perso');">
+    <!-- Section de la barre du header pour les liens -->
+    <header id="Header">
+    </header>
+
+
+    <!-- Section du bouton pour remonter en haut de page qui apparait quand on descent -->
+    <nav id="SideMenu">
+    </nav>
+
+
+    <!-- Image de fond de la page d'accueil-->
+    <div id="BackgroundImage">
+        <img src="../images-videos/background.jpg">
+    </div>
+
+
+    <!-- Section en haut de page avec des images du voyage et le nom et la description de celui-ci à changer selon choix -->
+    <section id="TripOverview">
+        <!-- Zone qui s'affiche s'il y a un voyage de choisi -->
+        <template id="TemplatePersoTrip">
+            <div class="overview">
+                <!-- Titre -->
+                <h1 id="VoyageName">Voyage pour {{destination}}</h1>
+
+                <!-- zone de gauche avec 2 images 1 texte -->
+                <div class="columnleft">
+                    <img id="Image" src="../images-videos/{{image1}}" loading="lazy" alt="Images du voyage à {{destination}}">
+                    <div id="Text">
+                        <h2>Quelques explications sur le voyage: </h2>
+                        <p>{{explication}}</p>
+                    </div>
+                    <img id="Image" src="../images-videos/{{image3}}" loading="lazy" alt="Images du voyage à {{destination}}">
+                </div>
+
+                <!-- zone de gauche avec 1 image 2 textes -->
+                <div class="columnright">
+                    <div id="Text">
+                        <h2>Descritpion du voyage: </h2>
+                        <p>{{description}}</p>
+                    </div>
+                    <img id="Image" src="../images-videos/{{image2}}" loading="lazy" alt="Images du voyage à {{destination}}">
+                    <div id="Text">
+                        <h2>Modalité du voyage: </h2>
+                        <p>{{modalite}}</p>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Zone qui ne s'affiche que s'il n'y a aucun voyage de choisi -->
+        <div id="NoTrip">
+            <h1>Vous n'avez pas choisi de voyage !</h1>
+            <p>Vous devez choisir un voyage avant de pouvoir le personnaliser !</p>
+            <button onclick="window.location.href='../index.html';" title="Go Index">Retour à la page d'accueil</button>
+        </div>
+    </section>
+
+
+    <!-- Section de personalisation du voyage avec la map à changer selon le voyage et les options prisent -->
+    <section id="TripOptions">
+
+        <!-- Section de la map interactive à droite-->
+        <div id="Map">
+            <iframe id="MapFrame" src="../map/mapmain.html" rel="preload" height="500" style="width: 100%"></iframe>
+            <p>Vous aurez accès, lors de votre voyage à tous les points qui ne sont pas en transparent sur la carte,
+                (ceux-ci correspondent au choix que vous avez fait dans les options ci-contre).
+                Vous pouvez cliquer sur les points pour avoir plus d'informations sur ceux-ci.
+                Il est aussi à noter que le choix d'un restaurant donne accès à tous les restaurants des gammes inférieures !
+            </p>
+        </div>
+
+        <!-- Section des options à gauche de la page -->
+        <div id="Options">
+            <!-- Section des moyens de transport pour se rendre sur place -->
+            <div class="row">
+                <h2>Choix du moyen de transport :</h2>
+                <p>Choisissez comment vous rendre à votre destination selon vos besoins
+                    et vos moyens. Chacun des transports s'adapteront au mieux à votre emploi du temps,
+                    et seront pris en compte pour l'aller et le retour.</p>
+                <select name="moyen de transport" id="MeansOfTransport" onchange="getOptions();">
+                    <option value=0>Avion</option>
+                    <option value=1>Train</option>
+                    <option value=2>Bus</option>
+                </select>
+            </div>
+            
+            <!-- Section des options de logement -->
+            <div class="row">
+                <h2>Choix de l'hôtel :</h2>
+                <p>Choisissez dans quelle gamme d'hôtel vous allez séjourner selon vos attentes
+                    et vos moyens. Vous trouverez dans chacun de nos partenaires les meilleures prestations
+                    désirables, issues des plus grands établissement de votre destination.</p>
+                <select name="hotel" id="Hotel" onchange="getOptions();">
+                    <option value=0>5 étoiles</option>
+                    <option value=1>4 étoiles</option>
+                    <option value=2>3 étoiles</option>
+                    <option value=3>2 étoiles</option>
+                    <option value=4>1 étoile</option>
+                </select>
+            </div>
+
+            <!-- Section des moyens de transport sur place -->
+            <div class="row">
+                <h2>Choix du moyen de déplacement :</h2>
+                <p>Choisissez votre moyen de transport sur place selon vos besoins
+                    et vos moyens. Grâce à nos accords vous aurez accès aux meilleurs services, et
+                    ce pour les meilleurs prix !</p>
+                <select name="transport sur place" id="OnSiteTransportation" onchange="getOptions();">
+                    <option value=0>Transport privé</option>
+                    <option value=1>Transports en commun</option>
+                    <option value=2>A pieds</option>
+                </select>
+            </div>
+
+            <!-- Section des options de restaurant -->
+            <div class="row">
+                <h2>Choix des restaurants :</h2>
+                <p>Choisissez l'excellence des repas auxquels vous voulez avoir accès. En choisissant
+                    une gamme de restauration vous aurez accès à tous les autres restaurants des gammes
+                    inférieures pour diversifier et découvrir d'autres mets. Tous nos partenaires sont
+                    reconnus par le guide michelin !
+                </p>
+                <select name="restauration" id="Restauration" onchange="getOptions();">
+                    <option value=0>3 étoiles</option>
+                    <option value=1>2 étoiles</option>
+                    <option value=2>1 étoile</option>
+                    <option value=3>Pas d'étoile</option>
+                </select>
+            </div>
+
+            <!-- Bouton de remise à 0 des options -->
+            <button id="Reset" onclick="reset();" title="Reset">Remettre à zéro</button>
+        </div>
+    </section>
+
+
+    <!-- Section du "canvas" de la carte personnalisé qui est ensuite envoyé au client -->
+    <section id="Carte">
+        <h2 id="VoyageName">Visuel de votre carte:</h2>
+        <canvas id="statCanvasCarte" width="480" height="320"></canvas>
+        <canvas id="dynaCanvasCarte" width="480" height="320"></canvas>
+    </section>
+
+    
+    <!-- Section en fin de page avec le prix du voyage selon les options et un bouton pour payer -->
+    <section id="TripPaiement">
+        <h2>Paiement</h2>
+        <p>Vous trouverez ci-dessous le prix prévisionnel pour votre voyage personnalisé pour un séjour de 3 jours sur place, avec 2 nuits en hôtel et 5 repas sur place.</p>
+        <p id="TripPrice">Prix prévisionnel:</p>
+        <button id="BtnRetour" onclick="window.location.href='../index.html';">Retourner à la page d'accueil</button>
+        <button id="BtnPanier" onclick="tripValide();">Ajouter au panier</button>
+    </section>
+
+
+    <!-- Section footer avec les infos et les terms et conditions -->
+    <footer id="Footer">
+    </footer>
+
+
+    <!-- Chargement du script -->
+    <script src="../js/scripts.js"></script>
+</body>
+</html>

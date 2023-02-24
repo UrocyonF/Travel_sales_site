@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="BALLEUR Maxime, GRIMARD Valentin">
+    <title>Voyage de rêve</title>
+    <meta name="keywords" content="vacance,voyage,vacation,holydays,trip" />
+    <meta name="description" content="Page principal de Voyage de rêve">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images-videos/brandIcon.png">
+    <link rel="stylesheet" href="css/stylesheet.css">
+</head>
+
+
+<body onload="creatTemplate('Index');">
+    <!-- Section de la barre du header pour les liens -->
+    <header id="Header">
+    </header>
+
+
+    <!-- Section du bouton pour remonter en haut de page qui apparait quand on descent -->
+    <nav id="SideMenu">
+    </nav>
+
+
+    <!-- Image de fond de la page d'accueil-->
+    <div id="BackgroundImage">
+        <img src="images-videos/background.jpg">
+    </div>
+
+
+    <!-- Section tout en haut de la page vidéo de voyage en fond avec le nom de l'entreprise dessus -->
+    <section>
+        <h1 id="Brandname">Voyage de rêve</h1>
+        <video id="BackgroundVideo" autoplay muted loop>
+            <source src="images-videos/brandVideo.mp4" type="video/mp4">
+        </video>
+        <button id="BtnVideo" onclick="playAndPause();">Vidéo Pause</button>
+    </section>
+
+
+    <!-- Section de présentation de l'entreprise -->
+    <section id="BrandOverview">
+        <h2>Envie de voyager ?</h2>
+        <p>Voyage de rêve à pour but de vous offrir les vacances à deux qui VOUS correspondent.<br>
+            Nous avons créé cette agence en ligne pour vous proposer des voyages à personnaliser selon vos attentes.<br>
+            Grâce à nos partenaires sur place vous pourrez voyager en toute sérénité avec nos cartes voyages
+            à remettre à ceux-ci pour profiter de leurs services d'exceptions !<br>
+            Il ne vous reste plus qu'à réussir à faire un choix !</p>
+    </section>
+
+
+    <!-- Section des filtres à appliquer sur les voyages -->
+    <section id="FilterTitle">
+        <h2>Voici nos cartes voyages en vente pour 2 personnes: </h2>
+        <h4>Filtrer votre recherche ?</p>
+
+        <!-- Filtre du prix (range) -->
+        <div id="TripFilter">
+            <div>
+                <p>Prix minimum de votre voyage.</p>
+                <p id="FilPrixOut">Prix: 520€</p>
+                <input type="range" id="FilPrice" min="440" max="600" list="fprix" step="5" oninput="changePageAccueil();">
+                <datalist id="fprix">
+                    <option value="440" label="440€"></option>
+                    <option value="480" label="480€"></option>
+                    <option value="520" label="520€"></option>
+                    <option value="560" label="560€"></option>
+                    <option value="600" label="600€"></option>
+                </datalist>
+            </div>
+
+            <!-- Filtre du pays de destination (liste) -->
+            <div>
+                <p>Pays de destination de votre voyage.</p>
+                <p id="FilDestOut">Destination: toutes</p>
+                <select name="destination" id="FilDestination" oninput="changePageAccueil();">
+                    <option value="toutes">Toutes</option>
+                    <option value="Italie">Italie</option>
+                    <option value="Espagne">Espagne</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section destinée au template des voyages -->
+    <section id="Trips">
+        <template id="TemplateIndexTrip">
+            <div class="column">
+                <h3>Voyages à {{destination}}</h3>
+                <a href="pages/personnalisation.html?trip={{destination}}"><img src="images-videos/{{image}}" loading="lazy" alt="{{destination}}" style="width:100%"></a>
+                <p>{{description}}</p>
+                <h4>A partir de :</h4>
+                <p>{{prix}} €</p>
+                <p><button onclick="window.location.href='pages/personnalisation.html?trip={{destination}}';">En savoir plus</button></p>
+            </div>
+        </template>
+    </section>
+
+
+    <!-- Section footer avec les infos et les terms et conditions -->
+    <footer id="Footer">
+    </footer>
+
+
+    <!-- Chargement du script -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

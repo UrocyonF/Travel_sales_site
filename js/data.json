@@ -1,0 +1,111 @@
+{
+    "generateId": true,
+    "data": [{
+        "destination" : "Milan",
+        "pays": "Italie",
+        "minprix": 470,
+        "description": "Surprenante par la diversité de ses quartiers, par la multitude et la richesse de ses sites et musées, Milan est une ville où il fait bon vivre, parcourue de grandes artères et de beaux parcs, nourrie d’une vie culturelle dense, dont le célébrissime théâtre de la Scala demeure l’emblème. Capitale de la mode et du design, elle fait montre d’une élégance qui n’appartient qu’à elle. Milan la bourgeoise se forge désormais une nouvelle identité postindustrielle, branchée, dynamique, de plus en plus cosmopolite, et a gagné définitivement le titre de città delle occasioni; «ville des possibles».",
+        "explication": "Surprenante par la diversité de ses quartiers, par la multitude et la richesse de ses sites et musées, Milan est une ville où il fait bon vivre, parcourue de grandes artères et de beaux parcs, nourrie d’une vie culturelle dense, dont le célébrissime théâtre de la Scala demeure l’emblème. Capitale de la mode et du design, elle fait montre d’une élégance.",
+        "modalite": "Surprenante par la diversité de ses quartiers, par la multitude et la richesse de ses sites et musées, Milan est une ville où il fait bon vivre, parcourue de grandes artères et de beaux parcs, nourrie d’une vie culturelle dense, dont le célébrissime théâtre de la Scala demeure l’emblème. Capitale de la mode et du design, elle fait montre d’une élégance qui n’appartient qu’à elle. Milan la bourgeoise se forge désormais une nouvelle identité.",
+        "images": [
+            "milan/milmain.jpg",
+            "milan/milim1.jpg",
+            "milan/milim2.jpg",
+            "milan/milim3.jpg"
+        ],
+        "moyenDeTransport": [
+            ["Lufthansa classe affaire", 430],
+            ["Frecciarossa classe confort", 80],
+            ["Flixbus seconde classe", 50]
+        ],
+        "hotel": [
+            ["Park Hyatt Milano", 1100],
+            ["Rossa Grand Hotel Milano", 300],
+            ["Hotel La Madonnina Milano", 220],
+            ["Castello Guest House Milano", 200],
+            ["Hotel Nuovo Milano", 110]
+        ],
+        "transportSurPlace": [
+            ["Transport privé", 540],
+            ["Transport en commun", 8.25],
+            ["Aucun", 0]
+        ],
+        "restaurant": [
+            ["Enrico Bartolini al Mudec", 300],
+            ["Seta by Antonio Guida", 210],
+            ["Viva Viviana Varese", 170],
+            ["Serendib", 40]
+        ]
+    }, {
+        "destination" : "Barcelone",
+        "pays": "Espagne",
+        "minprix": 520,
+        "description": "Barcelone est une ville résolument pétillante. Laissez-vous tenter par une délicieuse expérience mêlant culture, gastronomie et farniente. Cette destination aux mille visages vous séduira avec ses plages et ses boutiques agréablement colorées. Profitez de votre voyage à Barcelone pour admirer l’incroyable Sagrada Familia et les autres pépites architecturales de Gaudi, flâner dans le Barrio Gotico, déguster des spécialités locales sur les étals de La Boqueria ou buller sur les étendues de sable de La Barceloneta. Que demander de plus pour vivre le rêve ?",
+        "explication": "Barcelone est une ville résolument pétillante. Laissez-vous tenter par une délicieuse expérience mêlant culture, gastronomie et farniente. Cette destination aux mille visages vous séduira avec ses plages et ses boutiques agréablement colorées. Profitez de votre voyage à Barcelone pour admirer l’incroyable Sagrada Familia et les autres pépites architecturales de Gaudi.",
+        "modalite": "Barcelone est une ville résolument pétillante. Laissez-vous tenter par une délicieuse expérience mêlant culture, gastronomie et farniente. Cette destination aux mille visages vous séduira avec ses plages et ses boutiques agréablement colorées. Profitez de votre voyage à Barcelone pour admirer l’incroyable Sagrada Familia et les autres pépites architecturales de Gaudi, flâner dans le Barrio Gotico, déguster des spécialités locales sur les étals.",
+        "images": [
+            "barcelone/barmain.jpg",
+            "barcelone/barim1.jpg",
+            "barcelone/barim2.jpg",
+            "barcelone/barim3.jpg"
+        ],
+        "moyenDeTransport": [
+            ["Lufthansa classe affaire", 430],
+            ["inOUI première classe", 220],
+            ["Flixbus seconde classe", 70]
+        ],
+        "hotel": [
+            ["The One Barcelona", 1700],
+            ["Hotel Indigo Barcelona", 300],
+            ["Hotel NH Diagonal Center", 200],
+            ["Barcelona Urbany Hostel", 160],
+            ["Free Hostels Barcelona", 100]
+        ],
+        "transportSurPlace": [
+            ["Transport privé", 780],
+            ["Transport en commun", 23.8],
+            ["Aucun", 0]
+        ],
+        "restaurant": [
+            ["Lasarte", 250],
+            ["Cocina Hermanos Torres", 180],
+            ["Dos Palillos", 120],
+            ["Berbena", 50]
+        ]
+    }, {
+        "destination" : "Naples",
+        "pays": "Italie",
+        "minprix": 450,
+        "description": "Aucune autre ville en Europe n’a réussi à traverser les siècles avec autant de grâce et de sagacité que Naple. Venez découvrir cette ville au caractère bien trempé : turbulente et éruptive, surprenante et pleine de contradictions; veillé par un géant qui peut l’anéantir à tout moment : le Vésuve. Tous ont succombé à son charme, alors faites comme eux ! Grimpez sur la colline du Vomero en funiculaire, vous y verrez le soleil enflammer la ville, puis laissez-vous porter jusqu’à Chiaia, l’un des quartiers les plus chics de Naples pour vous attabler devant un spritz et un plateau-grignote.",
+        "explication": "Aucune autre ville en Europe n’a réussi à traverser les siècles avec autant de grâce et de sagacité que Naple. Venez découvrir cette ville au caractère bien trempé : turbulente et éruptive, surprenante et pleine de contradictions; veillé par un géant qui peut l’anéantir à tout moment : le Vésuve. Tous ont succombé à son charme, alors faites comme eux ! ",
+        "modalite": "Aucune autre ville en Europe n’a réussi à traverser les siècles avec autant de grâce et de sagacité que Naple. Venez découvrir cette ville au caractère bien trempé : turbulente et éruptive, surprenante et pleine de contradictions; veillé par un géant qui peut l’anéantir à tout moment : le Vésuve. Tous ont succombé à son charme, alors faites comme eux ! Grimpez sur la colline du Vomero en funiculaire, vous y verrez le soleil enflammer la ville.",
+        "images": [
+            "naples/napmain.jpg",
+            "naples/napim1.jpg",
+            "naples/napim2.jpg",
+            "naples/napim3.jpg"
+        ],
+        "moyenDeTransport": [
+            ["AirFrance première classe", 510],
+            ["Frecciarossa permière classe", 300],
+            ["Flixbus seconde classe", 90]
+        ],
+        "hotel": [
+            ["Grand Hotel Parker's Napoli", 310],
+            ["Palais Caracciolo di Santobuono", 180],
+            ["Transatlantico Restaurant Hotel", 160],
+            ["Gentile Suite B&B Napoli", 130],
+            ["Le stanze di Partenope Napoli", 80]
+        ],
+        "transportSurPlace": [
+            ["Transport privé", 810],
+            ["Transport en commun", 7],
+            ["Aucun",0]],
+        "restaurant": [
+            ["Ristorante Amici Miei", 200],
+            ["Taverna Estia", 170],
+            ["ARIA", 120],
+            ["Il Gobbetto", 40]
+        ]
+    }]
+}
