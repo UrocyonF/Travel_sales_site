@@ -759,7 +759,6 @@ function calculPrixTotal(diffJours) {
 function mapload() {
     mapboxgl.accessToken = token;
 
-
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',

@@ -2,7 +2,7 @@
     "generateId": true,
     "data": {
         "header": "<nav><ul><li><a href=\"{{pageoutlink}}index.html\">Accueil</a></li><li><a href=\"{{pageinlink}}personnalisation.html\">Personnalisation</a></li><li><a href=\"{{pageinlink}}payment.html\">Panier</a></li></ul><img id=\"Icon\" src=\"{{pageoutlink}}images-videos/brandIcon.png\" alt=\"Icon\"></nav>",
-        "footer": "<p><a href=\"https://www.google.fr/maps/@45.7821103,4.8480219,20.04z\">200 Quai Charles de Gaulle, 69006 Lyon</a><br>2022 Voyage de rêve by BALLEUR Maxime et GRIMARD Valentin</p>",
+        "footer": "<p><a href=\"https://www.google.fr/maps/@45.7821103,4.8480219,20.04z\">200 Quai Charles de Gaulle, 69006 Lyon</a><br>2022 Voyage de rêve</p>",
         "sidemenu": "<ul><li><a href=\"{{pageoutlink}}index.html\">Accueil</a></li><li><a href=\"{{pageinlink}}payment.html\">Panier</a></li></ul><button onclick=\"document.location='#Header'\" title=\"Go top\">Remonter en haut</button>"
     }
 }

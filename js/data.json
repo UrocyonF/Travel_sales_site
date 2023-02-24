@@ -63,7 +63,7 @@
         ],
         "transportSurPlace": [
             ["Transport privé", 780],
-            ["Transport en commun", 23.8],
+            ["Transport en commun", 24],
             ["Aucun", 0]
         ],
         "restaurant": [

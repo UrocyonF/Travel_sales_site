@@ -83,7 +83,6 @@ button:hover {
 }
 
 
-
 /*####### Index style sheet #######*/
 header {
     background-color: #0c1d2d;
@@ -221,7 +220,6 @@ input[type="range"] {
 }
 
 
-
 /*####### Personalisation style sheet #######*/
 #TripOverview {
     overflow: auto;
@@ -334,7 +332,6 @@ input[type="range"] {
 }
 
 
-
 /*####### Payment style sheet #######*/
 #Title {
     background-color:#356490;
@@ -401,9 +398,7 @@ input[type="range"] {
 }
 
 
-
 /*####### About us style sheet #######*/
-
 #Us {
     width: 100%;
     color: #000000;
@@ -433,7 +428,6 @@ input[type="range"] {
     margin-bottom: 0%;
     min-width: 500px;
 }
-
 
 
 /*####### Size adaptation sheet #######*/
@@ -468,7 +462,7 @@ input[type="range"] {
         padding: 5px 10px;
         font-size: 17px;
     }
-    
+
     /* Index page */
     #BtnVideo {
         top: 18.4%;
