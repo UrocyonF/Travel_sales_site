@@ -28,21 +28,6 @@ Avec:
 + toutes les images/vidéos sont libre de droit
 
 
-## Répartition du travail
-
-Maxime BALLEUR: (70%)
-- page d'accueil
-- page de personnalisation
-- toute la map (dossier map)
-- fonctions globals du js
-- toutes les données (JSON)
-- template, quantité et affichage du prix dans la page de paiement
-
-Valentin GRIMARD: (30%)
-- page payment
-- page about us
-
-
 ## Plan des fichiers et de leur comptenu
 
 - index.html -> page d'accueil
