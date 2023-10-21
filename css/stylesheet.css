@@ -1,3 +1,8 @@
+/*
+    Author: UrocyonF
+    Date: 2022 - 2023
+*/
+
 /*####### Global #######*/
 * {
     box-sizing: border-box;
@@ -220,7 +225,7 @@ input[type="range"] {
 }
 
 
-/*####### Personalisation style sheet #######*/
+/*####### Personalization style sheet #######*/
 #TripOverview {
     overflow: auto;
     padding: 5px;
@@ -483,7 +488,7 @@ input[type="range"] {
         flex-direction: column;
     }
 
-    /* Personalisation page */
+    /* Personalization page */
     .columnleft, .columnright {
         width: 100%;
         padding: 1%

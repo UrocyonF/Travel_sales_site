@@ -1,3 +1,8 @@
+<!--
+    Author: UrocyonF
+    Date: 2022 - 2023
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,8 +11,8 @@
     <title>Map page</title>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="UrocyonF">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Page permettant l'affichage de la map à personnaliser">
 
     <link rel="stylesheet" href="mapstyle.css">
@@ -16,10 +21,10 @@
 
 
 <body>
-    <!-- div dans lequel se trouve la map -->
+    <!-- div in which the map is located -->
     <div id='map'></div>
 
-    <!-- def du menu de choix du style de la carte -->
+    <!-- def of the card style choice menu -->
     <div id="menu">
         <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" checked="checked">
         <label for="satellite-v9">satellite</label>
@@ -27,7 +32,7 @@
         <label for="streets-v11">streets</label>
     </div>
 
-    <!-- import nécessaire pour la carte mapbox et du script de la carte -->
+    <!-- import needed for mapbox map and map script -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">

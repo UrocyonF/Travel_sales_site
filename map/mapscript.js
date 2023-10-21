@@ -1,24 +1,23 @@
+/*
+    Author: UrocyonF
+    Date: 2022 - 2023
+*/
 
-//token API mapbox
-const token = "pk.eyJ1IjoidXJvY3lvbiIsImEiOiJjbDhhb2YxaGwwY2tiM3hsZjdsbTZ2ODB5In0.lZICazlJKYPKC-UwgmYVsg";
-mapboxgl.accessToken = token;
-
-
-// définition des coordonnées de centrage de la map en fonction de la destination
+// definition of the centering coordinates of the map according to the destination
 const coocenter = {
     "Milan":[9.187818, 45.464761], 
     "Barcelone": [2.167095, 41.388582], 
     "Naples":[14.251233, 40.837213]
 };
 
-// définition des liens vers les données de chaque voyage
+// definition of links to the data of each trip
 const datalink = [
     "./mapmilandata.json", 
     "./mapbarcelonedata.json", 
     "./mapnaplesdata.json"
 ];
 
-// définition liens et noms des images pour les points
+// definition of links and image names for points
 const images = [
     {url:'airport.png', id:'avion'},
     {url:'rail.png', id:'train'},
@@ -28,74 +27,82 @@ const images = [
 ];
 
 
-// fonction pour créer la carte et ses composantes
+// function to create the map and its components
 function setupMap(desti) {
-    // création de la carte
-    const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/satellite-v9',
-        center: coocenter[desti],
-        zoom: 11,
-        interactive: true
-    });
 
-    // fonction qui gère l'ajout des points et leur gestion
-    function addPoints() {
-        // récuperation des données (depuis leur json) et appel de la fonction pour ajouter les points, selon le voyage
-        const name = desti.replace(/^./, desti[0].toLowerCase());
-        for (let i = 0; i < 3; i++) {
-            if (datalink[i].includes(name)) dlink=datalink[i];
-        }
-        
-        fetch(dlink)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            // appel de la fonction qui va modifiéer l'opacité des points selon le choix de l'utilisateur
-            data = setOpacity(data);
+    // creation of the map
+    fetch('../js/token.json')
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        mapboxgl.accessToken = data.token;
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/satellite-v9',
+            center: coocenter[desti],
+            zoom: 11,
+            interactive: true
+        });
 
-            // appel de la fonction pour ajouter les points
-            setupPoints(map, data);
-
-            // ajout des layers avec l'évenement à appeler à chaque changement (street <-> satellite)
-            const inputs = document.getElementById('menu').getElementsByTagName('input');
-            for (const input of inputs) {
-                input.onclick = (layer) => {
-                    const layerId = layer.target.id;
-                    map.setStyle('mapbox://styles/mapbox/'+layerId);
-                    setupPoints(map, data);
-                };
+        // function which manages the addition of points and their management
+        function addPoints() {
+            // retrieving the data (from their json) and calling the function to add the points, according to the trip
+            const name = desti.replace(/^./, desti[0].toLowerCase());
+            for (let i = 0; i < 3; i++) {
+                if (datalink[i].includes(name)) dlink=datalink[i];
             }
 
-            // création de l'évenement attendant une message de la page parente pour changer la l'opacité des points
-            window.addEventListener("message", (e) => {
-                mapdata = setOpacity(data);
-                map.getSource('places').setData(mapdata.data);
-            });
-        })
-    }
+            fetch(dlink)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                // call of the function which will modify the opacity of the points according to the user's choice
+                data = setOpacity(data);
 
-    // appel de la fonction précédement créée
-    addPoints()
+                // call the function to add the points
+                setupPoints(map, data);
 
-    // ajout de la barre de navigation
-    map.addControl(
-        new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl
-        })
-    );
+                // add layers with the event to call on each change (street <-> satellite)
+                const inputs = document.getElementById('menu').getElementsByTagName('input');
+                for (const input of inputs) {
+                    input.onclick = (layer) => {
+                        const layerId = layer.target.id;
+                        map.setStyle('mapbox://styles/mapbox/'+layerId);
+                        setupPoints(map, data);
+                    };
+                }
 
-    // ajout de la barre de zoom
-    var nav = new mapboxgl.NavigationControl();
-    map.addControl(nav);
+                // creation of the event waiting for a message from the parent page to change the opacity of the points
+                window.addEventListener("message", (e) => {
+                    mapdata = setOpacity(data);
+                    map.getSource('places').setData(mapdata.data);
+                });
+            })
+        }
+
+        // call of the previously created function
+        addPoints()
+
+        // adding the navigation bar
+        map.addControl(
+            new MapboxGeocoder({
+                accessToken: mapboxgl.accessToken,
+                mapboxgl: mapboxgl
+            })
+        );
+
+        // added zoom bar
+        var nav = new mapboxgl.NavigationControl();
+        map.addControl(nav);
+    })
 }
 
 
-// fonction pour modifier l'opacité des points dans le geojson
+// function to change opacity of points in geojson
 function setOpacity(mapdata) {
-    // récupère les valeurs (indices donné par les selects) des choix de l'utilisateur
+    // retrieves the values (indexes given by the selects) of the user's choices
     var indmoTransport = parent.document.getElementById("MeansOfTransport").value;
     var indHotel = parent.document.getElementById("Hotel").value;
     var indRestauration = parent.document.getElementById("Restauration").value;
@@ -104,7 +111,7 @@ function setOpacity(mapdata) {
     for (let i = 0; i < mapdata.data.features.length; i++) {
         var linkprop = mapdata.data.features[i].properties;
 
-        // si le point doit être affiché passe l'opacité à 1 sinon 0.4 (transparent)
+        // if the point must be displayed, set the opacity to 1 otherwise 0.4 (transparent)
         if (linkprop.type == "moTransport" && linkprop.indice == indmoTransport
             || linkprop.type == "hotel" && linkprop.indice == indHotel
             || linkprop.type == "restauration" && linkprop.indice >= indRestauration) 
@@ -119,15 +126,15 @@ function setOpacity(mapdata) {
 }
 
 
-// fonction pour ajouter les points sur la carte
+// function to add points on the map
 function setupPoints(map, mapdata) {
-    // création des variables qui gère le passage sur les points et la liste des images
+    // creation of variables which manages the passage over the points and the list of images
     let isHover = null;
 
-    // ajoute une fois les points au style de la carte actuel
+    // adds points to current map style once
     map.once('data', () => {
 
-        // chargement des images pour les points
+        // loading images for points
         Promise.all(
             images.map(img => new Promise((resolve, reject) => {
                 map.loadImage('icon/'+img.url, function (error, res) {
@@ -135,12 +142,14 @@ function setupPoints(map, mapdata) {
                     resolve();
                 })
             })) 
-        ).then(/* passe à la suite */)
+        ).then(
+            // do nothing
+        )
 
-        // ajout des points récupérés dans le fichier geojson
+        // adding the points retrieved to the geojson file
         map.addSource('places', mapdata);
 
-        // ajout des markers
+        // adding markers
         map.addLayer({
             'id': 'places',
             'type': 'symbol',
@@ -156,7 +165,7 @@ function setupPoints(map, mapdata) {
             }
         });
 
-        // ajout des popups et des interactions
+        // adding popups and interactions
         map.on('click', 'places', (e) => {
             const coordinates = e.features[0].geometry.coordinates.slice();
             const description = e.features[0].properties.description;
@@ -169,7 +178,7 @@ function setupPoints(map, mapdata) {
                 .addTo(map);
         });
 
-        // vérification de si le curseur est sur un point
+        // checking if the cursor is on a point
         map.on('mousemove', 'places', function(e) {
             if (e.features[0]) {
                 mouseover(e.features[0]);
@@ -178,12 +187,12 @@ function setupPoints(map, mapdata) {
             }
         });
 
-        // changement des points et du curseur quand on est plus sur un point
+        // change of points and cursor when we are no longer on a point
         map.on('mouseout', 'places', function(e) {
             mouseout();
         });
 
-        // fonction pour changer le curseur et l'opacité des points comme prévisé plus haut
+        // function to change the cursor and the opacity of the points as mentioned above
         function mouseover(feature) {
             isHover = feature;
             map.getCanvasContainer().style.cursor = 'pointer';
@@ -195,7 +204,7 @@ function setupPoints(map, mapdata) {
             });
         }
 
-        // fonction pour remettre le curseur normal et l'opacité des points à 1
+        // function to reset the normal slider and point opacity to 1
         function mouseout() {
             if (!isHover) return;
             map.getCanvasContainer().style.cursor = 'default';

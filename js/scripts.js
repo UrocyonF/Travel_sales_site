@@ -1,11 +1,12 @@
+/*
+    Author: UrocyonF
+    Date: 2022 - 2023
+*/
+
 "use strict";
 
-//token API mapbox
-const token = "pk.eyJ1IjoidXJvY3lvbiIsImEiOiJjbDhhb2YxaGwwY2tiM3hsZjdsbTZ2ODB5In0.lZICazlJKYPKC-UwgmYVsg";
-
-
-/*####### global #######*/
-// event afficher le menu seulement si on descend dans la page
+/*####### Global #######*/
+// event display the menu only if you go down the page
 window.addEventListener("scroll", function () {
     if (window.scrollY >= 470) {
         SideMenu.style.display = "block";
@@ -15,7 +16,7 @@ window.addEventListener("scroll", function () {
 });
 
 
-// permet d'adapter le lien vers les fichier json en fonction de la page actuelle
+// allows you to adapt the link to the json files depending on the current page
 let pagetojslink = "";
 let pagetopagelink = "pages/";
 if (!window.location.href.includes('index.html')) {
@@ -24,7 +25,7 @@ if (!window.location.href.includes('index.html')) {
 }
 
 
-// permet de récupérer les données du fichier headerfooter.json pour l'affichage des headers, footers et menu sur le côté
+// allows you to retrieve data from the headerfooter.json file for displaying headers, footers and menu on the side
 fetch(pagetojslink + "js/headerfooter.json")
     .then(function (response) {
         return response.json()
@@ -42,7 +43,7 @@ fetch(pagetojslink + "js/headerfooter.json")
     })
 
 
-// création de la classe des voyages en vente
+// creation of the sales travel class
 class Produit {
     constructor(destination, pays, minprix, description, explication, modalite, images, moyenDeTransport, hotel, transportSurPlace, restaurant) {
         this._destination = destination;
@@ -60,7 +61,7 @@ class Produit {
 }
 
 
-// permet la récupération des données du fichier data.json
+// allows data recovery from data.json file
 var groupetrips = [];
 fetch(pagetojslink + "js/data.json")
     .then(function (response) {
@@ -76,7 +77,7 @@ fetch(pagetojslink + "js/data.json")
     })
 
 
-// fonction pour créer les class Produit à partir du fichier data.json
+// function to create Product classes from the data.json file
 function creategroupeTrips(tripsdata) {
     for (let trip of tripsdata) {
         var newTrip = new Produit(trip.destination, trip.pays, trip.minprix,
@@ -87,15 +88,15 @@ function creategroupeTrips(tripsdata) {
 }
 
 
-// fonction pour modifier la page demandé avec les templates
+// function to modify the requested page with the templates
 function creatTemplate(page) {
     var template = document.getElementById("Template" + page + "Trip");
 
-    // parcours de la liste des class Produit et copiant le template pour chaques voyages
+    // browsing the list of Product classes and copying the template for each trip
     for (const e of groupetrips) {
         var clone = document.importNode(template.content, true);
 
-        // pour chaque classe, on modifie les valeurs des éléments du template en fonction de la page
+        // for each class, we modify the values of the template elements depending on the page
         var newContent = clone.firstElementChild.innerHTML
             .replace(/{{destination}}/g, e._destination)
             .replace(/{{description}}/g, e._description)
@@ -115,22 +116,22 @@ function creatTemplate(page) {
             var templateParent = 'TripOverview';
         }
 
-        // on remplace le contenu du template par le nouveau contenu
+        // we replace the content of the template with the new content
         clone.firstElementChild.innerHTML = newContent;
         document.getElementById(templateParent).appendChild(clone);
     }
 
-    // met à jour les templates (en cas de changement de la page par modification des filtres/options)
+    // updates the templates (if the page changes by modifying filters/options)
     if (page == 'Index') changePageAccueil()
     else if (page == 'Perso') changePagePerso()
 }
 
 
-// fonction pour calculer le prix du voyage en fonction de la destination, des options choisis et du nombre de jours
+// function to calculate the price of the trip based on the destination, the options chosen and the number of days
 function calculPrix(destination, indmoTransport, indHotel, indosTransport, indRestauration, nbJour) {
     var prix = 0;
 
-    // calcul du prix en fonction des options choisies
+    // calculation of the price based on the options chosen
     for (let i in groupetrips) {
         if (destination == groupetrips[i]._destination) {
             prix += groupetrips[i]._moyenDeTransport[indmoTransport][1];
@@ -140,7 +141,7 @@ function calculPrix(destination, indmoTransport, indHotel, indosTransport, indRe
         }
     }
 
-    // affichage du prix si on est sur la page de personnalisation
+    // display of the price if you are on the personalization page
     if (window.location.href.includes('personnalisation.html')) {
         document.getElementById("TripPrice").innerHTML = "Prix prévisionnel: " + prix + " €";
     }
@@ -149,8 +150,8 @@ function calculPrix(destination, indmoTransport, indHotel, indosTransport, indRe
 
 
 
-/*####### page d'accueil #######*/
-// fonction qui gère le bouton play/pause du player vidéo de la page d'accueil
+/*####### Home page #######*/
+// function which manages the play/pause button of the video player on the home page
 function playAndPause() {
     var video = document.getElementById("BackgroundVideo");
     var btn = document.getElementById("BtnVideo");
@@ -164,17 +165,17 @@ function playAndPause() {
 }
 
 
-// fonction pour modifier la page d'accueil selon les filtres choisis
+// function to modify the home page according to the chosen filters
 function changePageAccueil() {
-    // récupération des valeurs du filtre
+    // retrieving filter values
     var filtreprix = document.getElementById("FilPrice").value;
     var filtredestination = document.getElementById("FilDestination").value;
 
-    // affichage des variables de la page d'accueil
+    // displaying home page variables
     document.getElementById("FilPrixOut").innerHTML = "Prix: " + filtreprix + "€";
     document.getElementById("FilDestOut").innerHTML = "Destination: " + filtredestination;
 
-    // vérification des filtres pour afficher les voyages avec le template
+    // checking filters to display trips with the template
     var trips = document.getElementsByClassName("column");
     for (let i in groupetrips) {
         if (filtreprix >= groupetrips[i]._minprix && (filtredestination == "toutes" || filtredestination == groupetrips[i]._pays)) {
@@ -188,15 +189,15 @@ function changePageAccueil() {
 
 
 
-/*####### page de personalisation #######*/
-// fonction pour modifier la page de personnalisation selon le voyage choisi
+/*####### Personalization page #######*/
+// function to modify the personalization page according to the chosen trip
 function changePagePerso() {
-    // récupération du voyage choisi et des templates
+    // recovery of the chosen trip and templates
     let destination = new URLSearchParams(window.location.search).get("trip");
     var desti = "";
     var trips = document.getElementsByClassName("overview");
 
-    // affichage du template nécessaire (ou d'aucun template)
+    // display of the necessary template (or no template)
     document.getElementById("NoTrip").style.display = "none";
     for (let i in groupetrips) {
         if (destination == groupetrips[i]._destination) {
@@ -212,12 +213,12 @@ function changePagePerso() {
         document.getElementById("BtnPanier").style.display = "none";
     }
 
-    // vérifier s'il y a déjà des options choisies dans le sessionStorage (pour ce voyage)
+    // check if there are already options chosen in the sessionStorage (for this trip)
     var destiOption = JSON.parse(sessionStorage.getItem("currentDestiOption"));
     if (destiOption != null) {
         for (let i in destiOption) {
             if (destiOption[i].destination == desti) {
-                // modifie selon les options choisies dans le sessionlStorage
+                // modifies according to the options chosen in the sessionStorage
                 document.getElementById("MeansOfTransport").selectedIndex = destiOption[i].meansOfTransport;
                 document.getElementById("Hotel").selectedIndex = destiOption[i].hotel;
                 document.getElementById("OnSiteTransportation").selectedIndex = destiOption[i].onSiteTransportation;
@@ -226,40 +227,40 @@ function changePagePerso() {
         };
     }
 
-    // appel de la fonction pour la création de la carte selon le voyage choisi (dans l'iframe)
+    // call of the function to create the map according to the chosen trip (in the iframe)
     if (desti != "") {
         document.getElementById("MapFrame").contentWindow.setupMap(desti);
     }
 
-    // appel des fonction de modification de la page selon les options
+    // call the page modification functions according to the options
     creatCanvas(desti);
     getOptions();
 }
 
 
-// fonction pour récupérer les options choisies et les afficher sur la carte (en appelant les fonction d'affichage des points sur la map)
+// function to retrieve the chosen options and display them on the map (by calling the functions for displaying points on the map)
 function getOptions() {
-    // récupération des options choisies
+    // recovery of chosen options
     var indmoTransport = document.getElementById("MeansOfTransport").value;
     var indHotel = document.getElementById("Hotel").value;
     var indosTransport = document.getElementById("OnSiteTransportation").value;
     var indRestauration = document.getElementById("Restauration").value;
 
-    // appel la fonction de calcul du prix du voyage
+    // call the travel price calculation function
     var destination = new URLSearchParams(window.location.search).get("trip");
     calculPrix(destination, indmoTransport, indHotel, indosTransport, indRestauration, 3);
 
-    // affichages des options choisies dans le canvas
+    // displays of the chosen options in the canvas
     modifCanvas(indmoTransport, indHotel, indosTransport, indRestauration);
 
-    // affichage des options choisies sur la carte
+    // display of chosen options on the map
     var childWindow = document.getElementById("MapFrame").contentWindow;
     childWindow.postMessage([indmoTransport, indHotel, indRestauration]);
 
-    // enregistrement des changement dans le sessionStorage
+    // saving changes in sessionStorage
     var destiOption = JSON.parse(sessionStorage.getItem("currentDestiOption"));
 
-    // s'il n'y a pas encore d'options choisies pour ce voyage
+    // if there are no options chosen for this trip yet
     if (destiOption == null) {
         var ldestiOption = [{
             destination: destination,
@@ -270,12 +271,12 @@ function getOptions() {
         }];
     }
 
-    // s'il y a déjà des options choisies pour ce voyage
+    // if there are already options chosen for this trip
     else {
         var ldestiOption = destiOption;
         var trouve = false;
 
-        // s'il y a déjà un voyage qui porte le même nom d'enregisté
+        // if there is already a trip with the same name registered
         for (let i in ldestiOption) {
             if (ldestiOption[i].destination == destination) {
                 ldestiOption[i].meansOfTransport = indmoTransport;
@@ -286,7 +287,7 @@ function getOptions() {
             }
         }
 
-        // s'il n'y a pas encore de voyage qui porte le même nom d'enregisté
+        // if there is no trip with the same name registered yet
         if (!trouve) {
             ldestiOption.push({
                 destination: destination,
@@ -298,25 +299,25 @@ function getOptions() {
         }
     }
 
-    // enregistrement des options choisies dans le sessionStorage
+    // saving the chosen options in the sessionStorage
     sessionStorage.setItem("currentDestiOption", JSON.stringify(ldestiOption));
 }
 
 
-// fonction pour créer le canvas (avec l'image et le texte statique)
+// function to create the canvas (with image and static text)
 function creatCanvas(destination) {
-    // récupération du canvas
+    // canvas recovery
     const canvasS = document.getElementById("statCanvasCarte");
 
     if (canvasS.getContext) {
         const ctxS = canvasS.getContext("2d");
 
-        // création de l'image de fond
+        // creating the background image
         let img = new Image();
         img.addEventListener('load', function () {
             ctxS.drawImage(img, 0, 0, canvasS.width, canvasS.height);
 
-            // création du texte statique
+            // creating static text
             ctxS.font = '30px Verdana';
             ctxS.fillStyle = 'Black';
             ctxS.fillText('Voyage de rêve', 130, 40);
@@ -341,21 +342,21 @@ function creatCanvas(destination) {
 }
 
 
-// fonction pour modifier le canvas selon les choix de l'utilisateur
+// function to modify the canvas according to the user's choices
 function modifCanvas(indmoTransport, indHotel, indosTransport, indRestauration) {
-    // récupération du canvas et du voyage choisi
+    // recovery of the canvas and the chosen trip
     let destination = new URLSearchParams(window.location.search).get("trip");
     const canvasD = document.getElementById("dynaCanvasCarte");
 
     if (canvasD.getContext) {
         for (let i in groupetrips) {
 
-            // boucle pour trouver le voyage choisi
+            // loop to find the chosen trip
             if (destination == groupetrips[i]._destination) {
                 const ctxD = canvasD.getContext("2d");
                 ctxD.clearRect(0, 0, canvasD.width, canvasD.height);
 
-                // texte dynamique selon les choix de l'utilisateur et le voyage choisi
+                // dynamic text according to the user's choices and the chosen trip
                 ctxD.font = '11px Verdana';
                 ctxD.fillStyle = 'Black';
                 ctxD.fillText(groupetrips[i]._moyenDeTransport[indmoTransport][0], 9, 151);
@@ -371,7 +372,7 @@ function modifCanvas(indmoTransport, indHotel, indosTransport, indRestauration) 
 }
 
 
-// function pour reset les selects (inputs des options)
+// function to reset the selects (option inputs)
 function reset() {
     document.getElementById("MeansOfTransport").value = "0";
     document.getElementById("Hotel").value = "0";
@@ -382,21 +383,21 @@ function reset() {
 }
 
 
-// fonction pour enregistrer les options choisies dans le sessionStorage
+// function to save the chosen options in the sessionStorage
 function tripValide() {
-    // récupération des valeurs des selects
+    // retrieving select values
     var indmoTransport = document.getElementById("MeansOfTransport").value;
     var indHotel = document.getElementById("Hotel").value;
     var indosTransport = document.getElementById("OnSiteTransportation").value;
     var indRestauration = document.getElementById("Restauration").value;
 
-    // récupération du voyage choisi
+    // recovery of the chosen trip
     var destination = new URLSearchParams(window.location.search).get("trip");
 
-    // récupération de la liste des voyages déjà choisies
+    // recovery of the list of trips already chosen
     var choixVoyages = JSON.parse(sessionStorage.getItem("panier"));
 
-    // s'il n'y a pas encore de voyage sélectionné
+    // if there is no trip selected yet
     if (choixVoyages == null) {
         var choixVoyages = [{
             destination: destination,
@@ -420,32 +421,32 @@ function tripValide() {
         });
     };
 
-    // enregistrement des options choisies dans le sessionStorage
+    // saving the chosen options in the sessionStorage
     sessionStorage.setItem("panier", JSON.stringify(choixVoyages));
 
-    // redirection vers la page de paiement
+    // redirect to payment page
     window.location.href = 'payment.html';
 }
 
 
 
-/*####### page de panier #######*/
-// fonction qui vérifie si l'input est un string
+/*####### Shopping cart page #######*/
+// function that checks if the input is a string
 function isString(x) {
     return typeof x === "string" || x instanceof String;
 }
 
 
-//fonction pour supprimer tous les - puis inverser un objet de type string (dans une date)
+// function to remove all - then reverse an object of type string (into a date)
 function inverseString(chaine) {
     chaine.replaceAll('-', '');
     return (chaine.slice(8, 10) + '/' + chaine.slice(5, 7) + '/' + chaine.slice(0, 4));
 }
 
 
-// fonction pour vérifier que les infos entrées dans la page de payement sont valides
+// function to check that the information entered in the payment page is valid
 function validateForm() {
-    // Déclaration des variables qui seront utilisées pour les tests dans le formulaire 
+    // Declaration of variables that will be used for tests in the form
     var nom = document.getElementById("Surname").value;
     var prenom = document.getElementById("Name").value;
     var email = document.getElementById("Email").value;
@@ -453,12 +454,12 @@ function validateForm() {
     var dateD = document.getElementById("StartTrip").value;
     var dateF = document.getElementById("EndTrip").value;
 
-    // inverse et retire les "-" de la date pour pouvoir l'afficher dans le formulaire
+    // reverse and remove the "-" from the date to be able to display it in the form
     var x = inverseString(dateD);
     var y = inverseString(dateF);
     document.getElementById("RecapDate").innerHTML = "Votre voyage est prévu du " + x + " au " + y;
 
-    // tests pour vérifier que le formulaire est rempli correctement
+    // tests to verify that the form is completed correctly
     try {
         if (nom == "") throw "Le nom doit être rempli";
         else if (isString(nom) == false || nom == "")
@@ -484,17 +485,17 @@ function validateForm() {
         else throw "Votre commande est validée"
     }
 
-    // génère une erreur si le formulaire n'est pas rempli correctement
+    // generates an error if the form is not filled correctly
     catch (erreur) {
         alert(erreur)
     }
 }
 
 
-// liste comptenant tous les objets de la classe Panier
+// list containing all objects of the Shopping cart class
 let groupePanier = [];
 
-// fonction pour créer la liste avec les objets de la classe Panier à partir du sessionStorage
+// function to create list with objects of Shopping cart class from sessionStorage
 function creategroupePanier() {
     var panierdata = JSON.parse(sessionStorage.getItem("panier"));
     if (panierdata != null) {
@@ -506,7 +507,7 @@ function creategroupePanier() {
 }
 
 
-// création de la classe Panier
+// creating the Shopping cart class
 class Panier {
     constructor(destination, indmoTransport, indHotel, indosTransport, indRestauration, quantite) {
         this._destination = destination;
@@ -519,16 +520,16 @@ class Panier {
 }
 
 
-// fonction pour modifier la page payment avec les templates créés
+// function to modify the payment page with the created templates
 function creatPaymentTemplate() {
     creategroupePanier();
     var template = document.getElementById("TemplatePaymentTrip");
 
-    // parcours de la liste des class Panier et copiant le template pour chaques voyages
+    // browsing the list of Shopping cart classes and copying the template for each trip
     for (let i in groupePanier) {
         var clone = document.importNode(template.content, true);
 
-        // pour chaque classe, on modifie les valeurs des éléments du template
+        // for each class, we modify the values of the template elements
         for (let k in groupetrips) {
             if (groupetrips[k]._destination == groupePanier[i]._destination) {
                 var newContent = clone.firstElementChild.innerHTML
@@ -542,7 +543,7 @@ function creatPaymentTemplate() {
             }
         }
 
-        // on remplace le contenu du template par le nouveau contenu
+        // we replace the content of the template with the new content
         clone.firstElementChild.innerHTML = newContent;
         document.getElementById("Summary").appendChild(clone);
     }
@@ -551,14 +552,14 @@ function creatPaymentTemplate() {
 }
 
 
-// fonction pour modifier la page de paiement selon les voyages choisi
+// function to modify the payment page according to the chosen trips
 function changePaymentTemplate() {
-    // on déclare nos variables 
+    // we declare our variables
     var produit = document.getElementsByClassName("panierTemplate");
     var panier = JSON.parse(sessionStorage.getItem("panier"));
     var basketEmpty = true;
 
-    // permet d'afficher ou de cacher le div qui s'affiche si on a un panier vide et d'afficher un template par voyage 
+    // allows you to show or hide the div that is displayed if you have an empty basket and to display one template per trip
     document.getElementById("NoBasket").style.display = "none";
     for (var i in panier) {
         if (panier[i].destination != "none") {
@@ -569,17 +570,17 @@ function changePaymentTemplate() {
         }
     }
 
-    // affichage que si le panier est vide
+    // display only if the basket is empty
     if (basketEmpty == true) {
         document.getElementById("NoBasket").style.display = "block";
     }
 }
 
 
-// liste comptenant les indices des voyages supprimés (pour le suivi des indices)
+// list counting the indices of deleted trips (for tracking indices)
 let listIndSuppr = [];
 
-// fonction pour calculer le nombre d'indice dans la liste qui sont inférieur à l'indice passé en paramètre
+// function to calculate the number of indices in the list which are less than the index passed as a parameter
 function calculIndPrecedent(indiceVoyage) {
     var nbIndPrecedentSuppr = 0;
     for (var ind in listIndSuppr) {
@@ -589,16 +590,16 @@ function calculIndPrecedent(indiceVoyage) {
 }
 
 
-// fonction pour retirer une quantité de voyage
+// function to withdraw a travel quantity
 function BtnMoins(indiceVoyagePanier) {
-    // calcul de l'indice du voyage dans le panier (réel avec les supprissions précédentes)
+    // calculation of the travel index in the basket (real with previous deletions)
     var newIndiceVoyagePanier = indiceVoyagePanier - calculIndPrecedent(indiceVoyagePanier);
 
-    // déclaration des variables
+    // variable declaration
     var panier = JSON.parse(sessionStorage.getItem("panier"));
     panier[newIndiceVoyagePanier].quantite--;
 
-    // vérifier si la quantité est à 0, si oui, supprimer le voyage du panier
+    // check if the quantity is 0, if yes, delete the trip from the basket
     if (panier[newIndiceVoyagePanier].quantite == 0) {
         panier.splice(newIndiceVoyagePanier, 1);
         groupePanier.splice(newIndiceVoyagePanier, 1);
@@ -610,103 +611,111 @@ function BtnMoins(indiceVoyagePanier) {
         document.getElementsByClassName("panierTemplate")[indiceVoyagePanier].getElementsByClassName("quantite")[0].innerHTML = panier[newIndiceVoyagePanier].quantite;
     }
 
-    // sauvegarde du panier dans le sessionStorage
+    // saving the basket in the sessionStorage
     sessionStorage.setItem("panier", JSON.stringify(panier));
 
-    // met à jour le prix total
+    // updates the total price
     dateChange();
 }
 
 
-// Fonction pour ajouter une quantité de voyage
+// Function to add travel quantity
 function BtnPlus(indiceVoyagePanier) {
-    // calcul de l'indice du voyage dans le panier (réel avec les supprissions précédentes)
+    // calculation of the travel index in the basket (real with previous deletions)
     var newIndiceVoyagePanier = indiceVoyagePanier - calculIndPrecedent(indiceVoyagePanier);
 
-    // récupération du panier dans le sessionStorage
+    // retrieving the cart in the sessionStorage
     var panier = JSON.parse(sessionStorage.getItem("panier"));
 
-    // ajout d'une quantité
+    // adding a quantity
     panier[newIndiceVoyagePanier].quantite++;
     groupePanier[newIndiceVoyagePanier]._quantite++;
     sessionStorage.setItem("panier", JSON.stringify(panier));
 
-    // changement dans l'affichage de la page
+    // change in page display
     document.getElementsByClassName("panierTemplate")[indiceVoyagePanier].getElementsByClassName("quantite")[0].innerHTML = panier[newIndiceVoyagePanier].quantite;
 
-    // met à jour le prix total
+    // updates the total price
     dateChange();
 }
 
 
-// fonction qui affiche dans le formulaire la date de début et la date de fin du voyage 
+// function which displays in the form the start date and the end date of the trip
 function dateChange(){
-    // récupération de la date de début et de fin du voyage sous forme brute
+    // retrieving the start and end date of the trip in raw form
     var strD = document.getElementById("StartTrip").value;
     var strF = document.getElementById("EndTrip").value;
 
-    // transformation de la date de début et de fin du voyage sous forme de date js
+    //transforming the start and end date of the trip into js date form
     const dateD = new Date(strD);
     const dateF = new Date(strF);
 
-    // calcul du nombre de jour entre la date de début et de fin du voyage si la date de début et de fin sont valide
+    // calculation of the number of days between the start and end dates of the trip if the start and end dates are valid
     if (parseInt(strF.slice(0,4)) > parseInt(strD.slice(0,4))
             || parseInt(strF.slice(5,7)) > parseInt(strD.slice(5,7)) 
             || parseInt(strF.slice(8,10)) > parseInt(strD.slice(8,10))) {
 
-        // calcul du nombre de jours du voyage 
+        // calculation of the number of days of the trip 
         var Diff_temps = dateF.getTime() - dateD.getTime(); 
         var Diff_jours = Diff_temps / (1000 * 3600 * 24);
         
-        // appel de la fonction pour calculer le prix total en fonction du nombre de jours 
+        // call function to calculate total price based on number of days
         calculPrixTotal(Diff_jours);
     }
 }
 
 
-// fonction qui permet d'avoir le géocodage du lieu de départ
+// function which allows you to have the geocoding of the place of departure
 async function adresseMag(){
-    mapboxgl.accessToken = token;
-    const coordDepApi = await fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/200%20Quai%20Charles%20de%20Gaulle%2069006%20Lyon%20France.json?access_token="+mapbox.accessToken)
-    const coordDepJson = await coordDepApi.json() // conversion en fichier json
-    const coordDep = coordDepJson.features[0].center // récupération des coordonnées du lieu de départ
-    return coordDep 
+    // token for mapbox API
+    fetch(pagetojslink + "js/token.json")
+    .then(function (response) {
+        return response.json()
+    })
+    .then(function (data) {
+        mapboxgl.accessToken = data.token;
+
+        // call the API to have the coordinates of the place of departure and put in the correct format
+        const coordDepApi = fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/200%20Quai%20Charles%20de%20Gaulle%2069006%20Lyon%20France.json?access_token="+mapbox.accessToken)
+        const coordDepJson = coordDepApi.json() // conversion to json file
+        const coordDep = coordDepJson.features[0].center // recovery of coordinates of the place of departure
+        return coordDep 
+    })
 }
 
 
-// fonction qui permet de faire le géocodage du lieu d'arrivé que l'utilisateur à saisi
+// function which allows geocoding of the place of arrival that the user has entered
 async function adresseUti(){
-    // récupération de l'adresse de l'utilisateur
+    // retrieving user address
     var rueArr = document.getElementById("Street").value
     var rueArrTab = rueArr.split(" ")
     var adresseArr = ""
 
-    // création de l'adresse de l'utilisateur pour l'api dans le bon format (service de géocodage)
+    // creating the user address for the api in the correct format (geocoding service)
     for (i of rueArrTab){
         adresseArr += i+"%20"
     }
 
-    // appel de l'api pour avoir les coordonnées du lieu d'arrivé et mise au bon format
+    // call the API to have the coordinates of the place of arrival and put in the correct format
     var codePostArr = document.getElementById("Zipcode").value
     var villeArr = document.getElementById("Town").value
     adresseArr += codePostArr+"%20"+villeArr
 
-    // appel de l'api pour avoir les coordonnées du lieu d'arrivé et mise au bon format
     var coordArrApi = await fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/"+ adresseArr +".json?access_token="+mapbox.accessToken)
-    var coordArrJson = await coordArrApi.json() // convertion du fichier en json
+    var coordArrJson = await coordArrApi.json() // conversion to json file
     var adresseArrFin = coordArrJson.features[0].center
 
     return adresseArrFin 
 }
 
 
-// fonction qui permet d'avoir la distance qui sépare les deux adresses en paramètres
+// function which allows you to have the distance which separates the two addresses as parameters
 async function distanceDepArr(){
-    // récupération des addresses de départ et d'arrivé
+    // recovery of departure and arrival addresses
     const adresseDep = await adresseMag()
     const adresseArr = await adresseUti()
 
-    // appel de l'api pour avoir la distance entre les deux adresses
+    // API call to get the distance between the two addresses
     var distApi = await fetch("https://api.mapbox.com/directions/v5/mapbox/driving/" + adresseDep[0] + "," + adresseDep[1] + ";" + adresseArr[0] + "," + adresseArr[1] + ".json?access_token=" + mapbox.accessToken)
     const distJson = await distApi.json()
     const distanceFin = distJson.routes[0].distance
@@ -715,15 +724,15 @@ async function distanceDepArr(){
 }
 
 
-// fonction qui récupère la distance entre l'entreprise et le client et qui calcule le prix à ajouter en fonction de la distance et/ou si le client veut se faire livrer en moins de 72h
+// function which retrieves the distance between the company and the customer and which calculates the price to add depending on the distance and/or if the customer wants to have it delivered in less than 72 hours
 async function distancePrix(){
-    // récupération de la distance entre l'entreprise et le client
+    // recovery of the distance between the company and the customer
     const distance = await  distanceDepArr()
 
-    // ajout du prix en fonction de la distance (formule du cahier des charges)
+    // addition of the price depending on the distance (formula in the specifications)
     var surplus = Math.round(5 + 0.07 * distance/1000)
 
-    // test de si la date saisie est inférieure à 72h et ajout de 8€ si c'est le cas
+    // test if the date entered is less than 72 hours and addition of 8€ if this is the case
     if (Date.parse(document.getElementById("StartTrip").value) <= Date.now()+3*86400000){
         surplus += 8
     }
@@ -732,12 +741,12 @@ async function distancePrix(){
 }
 
 
-// fonction calculant le prix total en fonction du nombre de jours et du nombre de voyages 
+// function calculating the total price based on the number of days and number of trips
 function calculPrixTotal(diffJours) {
-    // initialisation de notre variable 
+    // initialization of our variable
     var prixTotal = 0;
 
-    // boucle pour calculer le prix total 
+    // loop to calculate total price 
     for (var i in groupePanier) {
         var prix = calculPrix(groupePanier[i]._destination, groupePanier[i]._indmoTransport, groupePanier[i]._indHotel, groupePanier[i]._indosTransport, groupePanier[i]._indRestauration, diffJours) * groupePanier[i]._quantite;
         if (groupePanier[i]._quantite >= 10) prix *= 0.90;
@@ -745,28 +754,6 @@ function calculPrixTotal(diffJours) {
         document.getElementsByClassName("panierTemplate")[parseInt(i) + calculIndPrecedent(i + 1)].getElementsByClassName("price")[0].innerHTML = "Prix total: " + prix + " €";
     }
 
-    // calcul du prix total selon la distance et le temps de livraison
-    //prixTotal += distancePrix()
-
-    // changement du prix total affiché
+    // change in total price displayed
     document.getElementById("TotPrice").innerHTML = "Prix total: " + prixTotal + " €";
-}
-
-
-
-/*####### page de aboutus #######*/
-// fonction pour afficher la map sur la page aboutus 
-function mapload() {
-    mapboxgl.accessToken = token;
-
-    const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [4.848075, 45.782155],
-        zoom: 15
-    });
-
-    const marker = new mapboxgl.Marker({ color: "rgba(0,0,0,.4)" })
-        .setLngLat([4.848075, 45.782155])
-        .addTo(map);
 }

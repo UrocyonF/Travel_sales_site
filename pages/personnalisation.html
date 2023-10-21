@@ -1,3 +1,8 @@
+<!--
+    Author: UrocyonF
+    Date: 2022 - 2023
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,31 +22,31 @@
 
 
 <body onload="creatTemplate('Perso');">
-    <!-- Section de la barre du header pour les liens -->
+    <!-- Header bar section for links -->
     <header id="Header">
     </header>
 
 
-    <!-- Section du bouton pour remonter en haut de page qui apparait quand on descent -->
+    <!-- Section of the button to go back to the top of the page which appears when you go down -->
     <nav id="SideMenu">
     </nav>
 
 
-    <!-- Image de fond de la page d'accueil-->
+    <!-- Home page background image -->
     <div id="BackgroundImage">
         <img src="../images-videos/background.jpg">
     </div>
 
 
-    <!-- Section en haut de page avec des images du voyage et le nom et la description de celui-ci à changer selon choix -->
+    <!-- Section at the top of the page with images of the trip and the name and description of it to change according to choice -->
     <section id="TripOverview">
-        <!-- Zone qui s'affiche s'il y a un voyage de choisi -->
+        <!-- Area that is displayed if there is a trip chosen -->
         <template id="TemplatePersoTrip">
             <div class="overview">
-                <!-- Titre -->
+                <!-- Title -->
                 <h1 id="VoyageName">Voyage pour {{destination}}</h1>
 
-                <!-- zone de gauche avec 2 images 1 texte -->
+                <!-- Left area with 2 images 1 text -->
                 <div class="columnleft">
                     <img id="Image" src="../images-videos/{{image1}}" loading="lazy" alt="Images du voyage à {{destination}}">
                     <div id="Text">
@@ -51,7 +56,7 @@
                     <img id="Image" src="../images-videos/{{image3}}" loading="lazy" alt="Images du voyage à {{destination}}">
                 </div>
 
-                <!-- zone de gauche avec 1 image 2 textes -->
+                <!-- Left area with 1 image 2 texts -->
                 <div class="columnright">
                     <div id="Text">
                         <h2>Descritpion du voyage: </h2>
@@ -66,7 +71,7 @@
             </div>
         </template>
 
-        <!-- Zone qui ne s'affiche que s'il n'y a aucun voyage de choisi -->
+        <!-- Area that is only displayed if there is no trip chosen -->
         <div id="NoTrip">
             <h1>Vous n'avez pas choisi de voyage !</h1>
             <p>Vous devez choisir un voyage avant de pouvoir le personnaliser !</p>
@@ -75,10 +80,10 @@
     </section>
 
 
-    <!-- Section de personalisation du voyage avec la map à changer selon le voyage et les options prisent -->
+    <!-- Travel customization section with the map to change depending on the trip and the options taken -->
     <section id="TripOptions">
 
-        <!-- Section de la map interactive à droite-->
+        <!-- Section of the interactive map on the right-->
         <div id="Map">
             <iframe id="MapFrame" src="../map/mapmain.html" rel="preload" height="500" style="width: 100%"></iframe>
             <p>Vous aurez accès, lors de votre voyage à tous les points qui ne sont pas en transparent sur la carte,
@@ -88,9 +93,9 @@
             </p>
         </div>
 
-        <!-- Section des options à gauche de la page -->
+        <!-- Options section on the left of the page -->
         <div id="Options">
-            <!-- Section des moyens de transport pour se rendre sur place -->
+            <!-- Section of means of transport to get there -->
             <div class="row">
                 <h2>Choix du moyen de transport :</h2>
                 <p>Choisissez comment vous rendre à votre destination selon vos besoins
@@ -103,7 +108,7 @@
                 </select>
             </div>
             
-            <!-- Section des options de logement -->
+            <!-- Housing Options Section -->
             <div class="row">
                 <h2>Choix de l'hôtel :</h2>
                 <p>Choisissez dans quelle gamme d'hôtel vous allez séjourner selon vos attentes
@@ -118,7 +123,7 @@
                 </select>
             </div>
 
-            <!-- Section des moyens de transport sur place -->
+            <!-- On-site transportation section -->
             <div class="row">
                 <h2>Choix du moyen de déplacement :</h2>
                 <p>Choisissez votre moyen de transport sur place selon vos besoins
@@ -131,7 +136,7 @@
                 </select>
             </div>
 
-            <!-- Section des options de restaurant -->
+            <!-- Restaurant options section -->
             <div class="row">
                 <h2>Choix des restaurants :</h2>
                 <p>Choisissez l'excellence des repas auxquels vous voulez avoir accès. En choisissant
@@ -147,13 +152,13 @@
                 </select>
             </div>
 
-            <!-- Bouton de remise à 0 des options -->
+            <!-- Options reset button -->
             <button id="Reset" onclick="reset();" title="Reset">Remettre à zéro</button>
         </div>
     </section>
 
 
-    <!-- Section du "canvas" de la carte personnalisé qui est ensuite envoyé au client -->
+    <!-- Section of the personalized card “canvas” which is then sent to the customer -->
     <section id="Carte">
         <h2 id="VoyageName">Visuel de votre carte:</h2>
         <canvas id="statCanvasCarte" width="480" height="320"></canvas>
@@ -161,7 +166,7 @@
     </section>
 
     
-    <!-- Section en fin de page avec le prix du voyage selon les options et un bouton pour payer -->
+    <!-- Section at the end of the page with the price of the trip according to the options and a button to pay -->
     <section id="TripPaiement">
         <h2>Paiement</h2>
         <p>Vous trouverez ci-dessous le prix prévisionnel pour votre voyage personnalisé pour un séjour de 3 jours sur place, avec 2 nuits en hôtel et 5 repas sur place.</p>
@@ -171,12 +176,12 @@
     </section>
 
 
-    <!-- Section footer avec les infos et les terms et conditions -->
+    <!-- Footer section with information and terms and conditions -->
     <footer id="Footer">
     </footer>
 
 
-    <!-- Chargement du script -->
+    <!-- Loading the script -->
     <script src="../js/scripts.js"></script>
 </body>
 </html>

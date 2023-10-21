@@ -1,3 +1,8 @@
+<!--
+    Author: UrocyonF
+    Date: 2022 - 2023
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -7,7 +12,7 @@
 
     <meta charset="utf-8">
     <meta name="author" content="UrocyonF">
-    <meta name="keywords" content="vacance,voyage,vacation,holydays,trip" />
+    <meta name="keywords" content="vacance,voyage,vacation,holydays,trip" >
     <meta name="description" content="Page principal de Voyage de rêve">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,23 +22,23 @@
 
 
 <body onload="creatTemplate('Index');">
-    <!-- Section de la barre du header pour les liens -->
+    <!-- Header bar section for links -->
     <header id="Header">
     </header>
 
 
-    <!-- Section du bouton pour remonter en haut de page qui apparait quand on descent -->
+    <!-- Section of the button to go back to the top of the page which appears when you go down -->
     <nav id="SideMenu">
     </nav>
 
 
-    <!-- Image de fond de la page d'accueil-->
+    <!-- Home page background image -->
     <div id="BackgroundImage">
         <img src="images-videos/background.jpg">
     </div>
 
 
-    <!-- Section tout en haut de la page vidéo de voyage en fond avec le nom de l'entreprise dessus -->
+    <!-- Section at the very top of the page travel video in the background with the company name on it -->
     <section>
         <h1 id="Brandname">Voyage de rêve</h1>
         <video id="BackgroundVideo" autoplay muted loop>
@@ -43,7 +48,7 @@
     </section>
 
 
-    <!-- Section de présentation de l'entreprise -->
+    <!-- Company overview section -->
     <section id="BrandOverview">
         <h2>Envie de voyager ?</h2>
         <p>Voyage de rêve à pour but de vous offrir les vacances à deux qui VOUS correspondent.<br>
@@ -54,12 +59,12 @@
     </section>
 
 
-    <!-- Section des filtres à appliquer sur les voyages -->
+    <!-- Section of filters to apply on trips -->
     <section id="FilterTitle">
         <h2>Voici nos cartes voyages en vente pour 2 personnes: </h2>
         <h4>Filtrer votre recherche ?</p>
 
-        <!-- Filtre du prix (range) -->
+        <!-- Price filter (range) -->
         <div id="TripFilter">
             <div>
                 <p>Prix minimum de votre voyage.</p>
@@ -74,7 +79,7 @@
                 </datalist>
             </div>
 
-            <!-- Filtre du pays de destination (liste) -->
+            <!-- Destination country filter (list) -->
             <div>
                 <p>Pays de destination de votre voyage.</p>
                 <p id="FilDestOut">Destination: toutes</p>
@@ -88,7 +93,7 @@
     </section>
 
 
-    <!-- Section destinée au template des voyages -->
+    <!-- Section intended for the travel template -->
     <section id="Trips">
         <template id="TemplateIndexTrip">
             <div class="column">
@@ -103,12 +108,12 @@
     </section>
 
 
-    <!-- Section footer avec les infos et les terms et conditions -->
+    <!-- Footer section with information and terms and conditions -->
     <footer id="Footer">
     </footer>
 
 
-    <!-- Chargement du script -->
+    <!-- Loading the script -->
     <script src="js/scripts.js"></script>
 </body>
 </html>
