@@ -1,4 +1,4 @@
-# Selling Website Project - 2022 / 2023
+# Travel sales site Project - 2022 / 2023
 
 ## Table of content
 1. [General Information](#general-info)
