@@ -5,7 +5,7 @@
 3. [Files Organization](#organization)
 4. [How to use](#how-to-use)
 
-
+***
 <a name="general-info"></a>
 ## General Information
 
@@ -28,7 +28,7 @@ Because this is just a school project, the trips are not real, and only three tr
 
 Moreover, as this site was written for programming courses in France, the texts of the pages, the names of the pages and variables are in French
 
-
+***
 <a name="organization"></a>
 ## Files Organization
 
@@ -121,7 +121,7 @@ In the same folder there is the folder ```icon``` that contains the icon used in
 ### [```images-videos```](/images-videos)
 This folder contains all the images and the video used in the website. It is organized in subfolders for each trip. The images are used in the personalization page and the video is used in the main page.
 
-
+***
 <a name="how-to-use"></a>
 ## How to use
 
