@@ -9,7 +9,7 @@
 <a name="general-info"></a>
 ## General Information
 
-This project is a school project. The objective of this project is to create a travel sales site for two people, for short stays/honeymoons. For this project, it is requested not to use any framework, the goal being the use of basic HTML, CSS and JS languages.
+This project is a school project. The goal of it is to create a travel sales site for two people, for short stays/honeymoons. For this project, it is requested not to use any framework, the goal being the use of basic HTML, CSS and JS languages.
 
 The site offers the following possibilities:
 - possibility of choosing a trip (displayed in templates),
